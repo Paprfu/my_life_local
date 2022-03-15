@@ -1,0 +1,3 @@
+<?php
+
+const CAR = 'ferrari';

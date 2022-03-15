@@ -1,0 +1,31 @@
+//mail List
+.mail-list{
+	.list-group-item{
+		color: #fff;
+		border: none;
+		&:hover{
+			background: #192632;
+		}
+	}
+}
+.mail-content{
+	a{
+		color: #8a8a8a;
+	}
+}
+.card{
+	.showing{
+		line-height: 50px;
+		margin-bottom: 0;
+	}
+}
+.thumb-sm{
+    height: 32px;
+    width: 32px;
+}
+label{
+	display: inline;
+}
+.border-bottom{
+	border-bottom: 1px solid #5d6270!important;
+}
