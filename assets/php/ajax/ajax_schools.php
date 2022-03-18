@@ -7,12 +7,11 @@ $projects = Globals::$user->getProjects();
 
 if (isset($_POST['method'])) {
     switch ($_POST['method']) {
-        case 'createProject':
-            $id_user = $_POST['id_user'];
+        case 'createSchool':
             $name = $_POST['name'];
             $start = $_POST['start'];
             $end = $_POST['end'];
-            $sql = "INSERT INTO projects (name ,start, end)
+            $sql = "INSERT INTO schools (name ,start, end)
                     VALUES ('$name', '$start', '$end')";
             Globals::$database->getResult($sql);
             $sql = "SELECT MAX(id) as id FROM projects";
@@ -148,8 +147,8 @@ function showProjectsEdit($today, $project)
     <td>
         <?php $date = new DateTime($project->start); ?>
         <label for="start-edit-input"></label><input
-                id="start-edit-input" type="date" class="form-control"
-                value="<?php echo $date->format('Y-m-d') ?>"></td>
+            id="start-edit-input" type="date" class="form-control"
+            value="<?php echo $date->format('Y-m-d') ?>"></td>
     <td><?php try {
             $date = new DateTime($project->end);
         } catch (Exception $e) {
@@ -177,7 +176,7 @@ function showProjectsEdit($today, $project)
     ?>
     <td>
         <button class="btn btn-common" onclick="saveProject(<?php echo $project->id ?>)"><span
-                    class="mdi mdi-content-save"></span>Uložiť
+                class="mdi mdi-content-save"></span>Uložiť
         </button>
     </td>
 

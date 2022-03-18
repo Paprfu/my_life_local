@@ -10,6 +10,33 @@
 				$type = $_POST['type'];
 				$array = array();
 				switch ($type) {
+                    case 'showDeletedTaskConfirmation':
+                        $task = Globals::$database->getTask_ID($_POST['id']);
+                        $text = "";
+                        if($task == null)
+                            $text = "The task has not been found in the database to confirm its delete";
+                        else
+                            $text = "The task ".$task->name ." has been deleted!";
+
+                        ?>
+
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title">Deleted Task Confirmation</h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                              </button>
+                            </div>
+                            <div class="modal-body">
+                              <p><?php echo $text ?></p>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-common">OK</button>
+
+                            </div>
+                          </div>
+
+                        <?php
 					case 'project':
 						$array = Globals::$database->getProjects();
 						foreach ($array as $a) {

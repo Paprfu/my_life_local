@@ -114,8 +114,9 @@ function deleteTask(id_task) {
     }).done(function () {
         $('#archived-tasks-table-tr-' + id_task).remove();
         $('#task-' + id_task).remove();
+        showDeletedTaskConfirmation(id_task);
     }).fail(function () {
-        alert('Úlohu sa nepodarilo vymazať');
+        alert('Fail: Task has not been deleted!');
     });
 
 }
@@ -300,13 +301,15 @@ function changeConfirmButton(id, method) {
 
 
                 }).fail(function () {
-                    alert('Problém sa nepodarilo vymazať');
+                    alert('Fail: Confirm button has not been changed!');
                 });
 
             });
             break;
         case 'delete':
-            deleteTask(id);
+            $(".confirmButton").on("click", function () {
+               deleteTask(id);
+            });
             break;
         case 'archive':
             $(".confirmArchiveTaskButton").on("click", function () {
@@ -538,6 +541,22 @@ function editProblem(id) {
         $('#problems-task-tr-' + id).empty().append(data);
     }).fail(function (ts) {
         alert('Fail: Edit problem modal has not been shown ' + ts.text);
+    });
+}
+
+function showDeletedTaskConfirmation(id_task) {
+    $.ajax({
+        url: 'assets/php/ajax/ajax_tasks.php',
+        type: 'POST',
+        data:
+            {
+                method: 'showDeletedTaskConfirmation',
+                id: id_task,
+            },
+    }).done(function (data) {
+        $('#modal-dialog').empty().append(data);
+    }).fail(function (ts) {
+        alert('Fail: Deleted task confirmation dialog has not been shown ' + ts.text);
     });
 }
 

@@ -131,8 +131,9 @@ foreach ($repeats as $r) {
         </div>
 
         <!-- MODALS -->
+        <div id="modal-dialog" class="modal-dialog" role="document">
 
-
+        </div>
         <?php
         addTaskModal(null);
         deleteTaskModal();

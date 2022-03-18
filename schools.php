@@ -1,5 +1,5 @@
 <?php
-$projects = Globals::$person->getSchools();
+$schools = Globals::$person->getSchools();
 
 ?>
 
@@ -45,7 +45,7 @@ $projects = Globals::$person->getSchools();
                 <div class="col-lg-12 col-md-12 col-xs-12">
                     <div class="card bg-dark">
                         <div class="card-header">
-                            <h4 class="card-title text-white">Projects in progress</h4>
+                            <h4 class="card-title text-white">Schools in progress</h4>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive-sm">
@@ -64,8 +64,8 @@ $projects = Globals::$person->getSchools();
                                     <tbody id="projects-list-tbody">
                                     <?php
                                     $number = 1;
-                                    foreach ($projects_undone as $project) {
-                                        showProject($project, $number, false);
+                                    foreach ($schools as $school) {
+                                        showSchool($school);
                                         $number++;
                                     }
                                     ?>
@@ -102,8 +102,8 @@ $projects = Globals::$person->getSchools();
                                     <tbody>
                                     <?php
                                     $number = 1;
-                                    foreach ($projects_done as $p) {
-                                        showProject($p, $number, false);
+                                    foreach ($schools as $school) {
+                                        showProject($school, $number, false);
                                         $number++;
                                     }
                                     ?>
@@ -121,7 +121,7 @@ $projects = Globals::$person->getSchools();
         <div class="container-fluid">
             <div class="card bg-dark">
                 <div class="card-header border-bottom">
-                    <h4 class="card-title text-white">Create new project</h4>
+                    <h4 class="card-title text-white">Add new school</h4>
                 </div>
 
                 <div class="card-body">
@@ -139,7 +139,7 @@ $projects = Globals::$person->getSchools();
                             <div class='form-group row'>
                                 <label for="name-input"
                                        class='col-sm-2 col-form-label control-label text-white'>
-                                    Start of the project</label>
+                                    Start of the school</label>
                                 <div class='col-sm-10'>
                                     <label for="start-input"></label><input id="start-input" type='date'
                                                                             name='start-date'
@@ -162,7 +162,7 @@ $projects = Globals::$person->getSchools();
                                 </div>
                             </div>
                             <button class='btn btn-common'
-                                    onclick="createProject(<?php echo Globals::$user->id ?>)">
+                                    onclick="createSchool(<?php echo Globals::$user->id ?>)">
                                 Create new project
                             </button>
                             <div id="msg-submit">
